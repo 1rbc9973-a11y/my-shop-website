@@ -39,10 +39,13 @@ const db = new Database("shop.db");
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+app.set("trust proxy", 1);
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
+  proxy: true,
   cookie: {
     httpOnly: true,
     sameSite: "lax",
