@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Local Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>My Local Shop</h1>
+    <p>Your business, online.</p>
+  </header>
+
+  <main>
+    <section id="auth">
+      <div class="panel">
+        <div class="tabs">
+          <button id="loginTab" class="active">Sign In</button>
+          <button id="registerTab">Create Shop</button>
+        </div>
+
+        <form id="authForm">
+          <h2 id="formTitle">Shopkeeper Login</h2>
+
+          <label for="shopId">Shopkeeper ID</label>
+          <input id="shopId" placeholder="e.g. myshop01"
+                 autocomplete="username" required>
+
+          <div id="shopNameField" hidden>
+            <label for="shopName">Shop Name</label>
+            <input id="shopName" placeholder="Your shop name">
+          </div>
+
+          <label for="password">Password</label>
+          <input id="password" type="password"
+                 autocomplete="current-password"
+                 minlength="10" required>
+
+          <button class="primary" type="submit" id="authButton">
+            Sign In
+          </button>
+          <p id="authMessage" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="welcome">
+        <div>
+          <h2 id="shopTitle">Your Shop</h2>
+          <p>Manage your products and prices.</p>
+        </div>
+        <button id="logoutButton">Sign Out</button>
+      </div>
+      <div class="dashboardStats">
+  <div class="statCard">
+    <div class="statIcon blue">📦</div>
+    <div>
+      <p>Total Products</p>
+      <h3 id="totalProducts">0</h3>
+    </div>
+  </div>
+
+  <div class="statCard">
+    <div class="statIcon green">💰</div>
+    <div>
+      <p>Inventory Value</p>
+      <h3 id="inventoryValue">₹0.00</h3>
+    </div>
+  </div>
+
+  <div class="statCard">
+    <div class="statIcon orange">🏪</div>
+    <div>
+      <p>Total Stock Units</p>
+      <h3 id="totalStock">0</h3>
+    </div>
+  </div>
+
+  <div class="statCard">
+    <div class="statIcon red">⚠️</div>
+    <div>
+      <p>Low Stock Products</p>
+      <h3 id="lowStock">0</h3>
+    </div>
+  </div>
+</div>
+
+      <div class="panel">
+        <h3>Add a Product</h3>
+        <form id="productForm">
+          <label for="productName">Product name</label>
+          <input id="productName" required maxlength="120"
+                 placeholder="e.g. Rice 5 kg">
+          <label for="productImage">Product Photo</label>
+          <input id="productImage"
+                type="file"
+                accept="image/jpeg,image/png,image/webp">
+          <img
+            id="imagePreview"
+            alt="Selected product preview"
+            hidden
+            style="width:140px;height:140px;object-fit:cover;border-radius:12px;margin-top:12px;">
+          <div class="formGrid">
+            <div>
+              <label for="mrp">MRP (₹)</label>
+              <input id="mrp" type="number" min="0.01"
+                     step="0.01" required>
+            </div>
+            <div>
+              <label for="discount">Discount (%)</label>
+              <input id="discount" type="number" min="0"
+                     max="100" value="0" required>
+            </div>
+            <div>
+              <label for="stock">Stock quantity</label>
+              <input id="stock" type="number" min="0"
+                     step="1" value="1" required>
+            </div>
+          </div>
+
+          <p>Selling price: <strong id="pricePreview">₹0.00</strong></p>
+          <button class="primary" type="submit">Add Product</button>
+          <p id="productMessage" role="status"></p>
+        </form>
+      </div>
+
+      <div class="panel">
+        <h3>Your Products</h3>
+        <div id="products">
+          <p>Loading products...</p>
+        </div>
+      </div>
+      <div class="panel">
+  <div class="ordersHeading">
+    <div>
+      <h3>Customer Orders</h3>
+      <p>Track orders and update their status.</p>
+    </div>
+    <button type="button" id="refreshOrders">Refresh</button>
+  </div>
+
+  <div class="orderFilters">
+    <input
+      id="orderSearch"
+      type="search"
+      placeholder="Search order ID or customer..."
+    >
+    <select id="orderStatusFilter">
+      <option value="All">All statuses</option>
+      <option>Pending</option>
+      <option>Confirmed</option>
+      <option>Preparing</option>
+      <option>Ready for Pickup</option>
+      <option>Out for Delivery</option>
+      <option>Delivered</option>
+      <option>Cancelled</option>
+    </select>
+  </div>
+
+  <p id="ordersMessage" role="status"></p>
+  <div id="orders">
+    <p>Loading orders...</p>
+  </div>
+</div>
+      <p id="shopLinkArea"></p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

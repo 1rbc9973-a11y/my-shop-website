@@ -1,0 +1,444 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #182230;
+  background: #f5f7fb;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background: linear-gradient(120deg, #102b50, #1765c0);
+  color: white;
+  padding: 32px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: clamp(26px, 4vw, 38px);
+  letter-spacing: -1px;
+}
+
+header p {
+  color: #dceafe;
+  margin-bottom: 0;
+}
+
+main {
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 0 18px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #e7ebf2;
+  border-radius: 18px;
+  padding: 26px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 28px #18223008;
+}
+
+h2, h3 {
+  letter-spacing: -0.5px;
+}
+
+label {
+  display: block;
+  margin: 16px 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #d5dce7;
+  border-radius: 10px;
+  background: white;
+  font: inherit;
+}
+
+input:focus {
+  outline: 2px solid #a9cfff;
+  border-color: #1765c0;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.tabs button {
+  flex: 1;
+  background: #eef2f8;
+  color: #344054;
+}
+
+.tabs button.active,
+.primary {
+  background: #1765c0;
+  color: white;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.welcome h2 {
+  margin-bottom: 5px;
+}
+
+.welcome p {
+  color: #667085;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.product {
+  display: inline-flex;
+  flex-direction: column;
+  vertical-align: top;
+  width: calc(33.333% - 14px);
+  margin: 6px;
+  padding: 12px;
+  background: white;
+  border: 1px solid #e5eaf2;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+
+.productImage {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #f1f4f8;
+}
+
+.product h4 {
+  margin: 14px 0 4px;
+  font-size: 17px;
+}
+
+.product p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #536176;
+}
+
+.deleteButton {
+  margin-top: auto;
+  background: #fff0f0;
+  color: #bd3030;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#authMessage,
+#productMessage {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+  .product {
+    width: calc(50% - 14px);
+  }
+
+  .productImage {
+    height: 145px;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .product {
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+}
+/* Shopkeeper dashboard */
+.dashboardStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  padding: 20px 16px;
+  background: #ffffff;
+  border: 1px solid #e5eaf2;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px #18223008;
+}
+
+.statIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  font-size: 22px;
+}
+
+.statIcon.blue {
+  background: #e8f1ff;
+}
+
+.statIcon.green {
+  background: #e4f8ec;
+}
+
+.statIcon.orange {
+  background: #fff1dc;
+}
+
+.statIcon.red {
+  background: #ffebeb;
+}
+
+.statCard p {
+  margin: 0 0 8px;
+  color: #667085;
+  font-size: 12px;
+}
+
+.statCard h3 {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 25px);
+  overflow-wrap: anywhere;
+}
+
+#products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.product {
+  width: calc(33.333% - 8px);
+  margin: 0;
+  flex: 0 0 calc(33.333% - 8px);
+}
+
+.stockStatus {
+  display: inline-block;
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px !important;
+  font-weight: 700;
+  line-height: 1.4 !important;
+}
+
+.inStock {
+  background: #e4f8ec;
+  color: #167344 !important;
+}
+
+.lowStockStatus {
+  background: #fff1dc;
+  color: #975800 !important;
+}
+
+.outOfStock {
+  background: #ffebeb;
+  color: #b42318 !important;
+}
+
+@media (max-width: 850px) {
+  .dashboardStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product {
+    flex-basis: calc(50% - 6px);
+    width: calc(50% - 6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboardStats {
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 14px 10px;
+    gap: 8px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .statIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .product {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}
+.ordersHeading,
+.orderCardHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.ordersHeading p {
+  color: #667085;
+  font-size: 14px;
+}
+
+.orderFilters {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.orderFilters select,
+.orderStatusSelect {
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #d5dce7;
+  border-radius: 10px;
+  background: white;
+  font: inherit;
+}
+
+.orderCard {
+  padding: 20px;
+  margin: 14px 0;
+  border: 1px solid #e5eaf2;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+
+.orderCard h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.orderCard p,
+.orderCard li {
+  color: #536176;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.orderBadge {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #eef2f8;
+  color: #344054;
+}
+
+.orderBadge.pending {
+  background: #fff1dc;
+  color: #975800;
+}
+
+.orderBadge.confirmed,
+.orderBadge.preparing {
+  background: #e8f1ff;
+  color: #245fc7;
+}
+
+.orderBadge.delivered {
+  background: #e4f8ec;
+  color: #167344;
+}
+
+.orderBadge.cancelled {
+  background: #ffebeb;
+  color: #b42318;
+}
+
+.orderTotal {
+  font-size: 18px !important;
+  font-weight: 700;
+  color: #182230 !important;
+}
+
+.orderCard .primary {
+  margin-top: 12px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+@media (max-width: 600px) {
+  .orderFilters {
+    grid-template-columns: 1fr;
+  }
+
+  .orderCardHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#090d12">
+  <meta name="description" content="Discover products and great prices at your local shop.">
+
+  <title>My Local Shop | Shop Online</title>
+
+  <link rel="stylesheet" href="customer.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="topbar">
+    <a class="brand" href="customer.html">
+      <span aria-hidden="true">✳</span> My Local Shop
+    </a>
+
+    <a class="shopkeeperLink" href="/">
+      Shopkeeper Login ↗
+    </a>
+  </header>
+
+  <!-- Hero and shop selection -->
+  <section class="hero">
+    <p class="eyebrow">YOUR NEIGHBOURHOOD, DELIVERED</p>
+
+    <h1>
+      Good finds.<br>
+      <span>Better prices.</span>
+    </h1>
+
+    <p>
+      Discover everyday essentials from your favourite local shops.
+    </p>
+
+    <label for="shopSelect">Choose your local shop</label>
+
+    <select id="shopSelect">
+      <option value="">Loading shops...</option>
+    </select>
+  </section>
+
+  <main>
+    <!-- Product catalogue -->
+    <section class="catalog" aria-labelledby="catalogTitle">
+      <div class="sectionHeading">
+        <div>
+          <h2 id="catalogTitle">Explore products</h2>
+          <p id="catalogMessage" role="status">
+            Choose a shop to get started.
+          </p>
+        </div>
+
+        <input
+          id="productSearch"
+          type="search"
+          placeholder="⌕ Search products..."
+          aria-label="Search products"
+          autocomplete="off"
+        >
+      </div>
+
+      <!-- JavaScript adds category filters here -->
+      <div
+        id="categoryBar"
+        class="categoryBar"
+        aria-label="Product categories"
+      ></div>
+
+      <!-- JavaScript adds sorting controls here -->
+      <div class="shopToolbar">
+        <span id="visibleCount">Explore available products</span>
+
+        <label for="sortProducts">
+          Sort:
+          <select id="sortProducts">
+            <option value="featured">Recommended</option>
+            <option value="priceLow">Price: Low to High</option>
+            <option value="priceHigh">Price: High to Low</option>
+            <option value="discount">Biggest Discount</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </label>
+      </div>
+
+      <div id="products" class="productGrid" aria-live="polite">
+        <div class="emptyCart">Choose a shop to see available products.</div>
+      </div>
+    </section>
+
+    <!-- Shopping cart and checkout -->
+    <section
+      class="cartSection"
+      id="cartSection"
+      aria-labelledby="cartHeading"
+    >
+      <div class="cartHeading">
+        <div>
+          <h2 id="cartHeading">Your cart 🛒</h2>
+          <p>Review your items before placing your order.</p>
+        </div>
+
+        <span id="cartCount" class="cartCount">0 items</span>
+      </div>
+
+      <div id="cartItems">
+        <div class="emptyCart">
+          <span>🛒</span>
+          Your cart is waiting for something good.
+        </div>
+      </div>
+
+      <div class="cartTotal">
+        <span>Order total</span>
+        <strong id="cartTotal">₹0.00</strong>
+      </div>
+
+      <h3>Delivery details</h3>
+
+      <form id="checkoutForm">
+        <div class="checkoutGrid">
+          <div>
+            <label for="customerName">Full name</label>
+            <input
+              id="customerName"
+              name="customerName"
+              type="text"
+              maxlength="100"
+              autocomplete="name"
+              placeholder="Enter your name"
+              required
+            >
+          </div>
+
+          <div>
+            <label for="phone">Phone number</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              maxlength="20"
+              autocomplete="tel"
+              pattern="[0-9+() -]{7,20}"
+              placeholder="Enter phone number"
+              required
+            >
+          </div>
+
+          <div class="fullWidth">
+            <label for="address">Delivery address</label>
+            <textarea
+              id="address"
+              name="address"
+              maxlength="500"
+              autocomplete="street-address"
+              placeholder="House number, street, area and city"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <button
+          id="placeOrder"
+          class="checkoutButton"
+          type="submit"
+          disabled
+        >
+          Place Order →
+        </button>
+
+        <p id="checkoutMessage" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>✳ My Local Shop</p>
+    <p>Great prices. Local stores. Simple shopping.</p>
+  </footer>
+
+  <!-- Notification element is created by customer.js when needed -->
+  <script src="customer.js"></script>
+</body>
+</html>
