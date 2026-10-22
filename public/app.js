@@ -10,7 +10,7 @@ function showMessage(id, message) {
 async function api(url, options = {}) {
   const response = await fetch(url, {
     ...options,
-    credentials: "same-origin",
+    credentials: "include",
     headers: {
       ...(options.body ? { "Content-Type": "application/json" } : {}),
       ...options.headers
