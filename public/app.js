@@ -1,6 +1,7 @@
 const $ = id => document.getElementById(id);
 
 let mode = "login";
+let previewUrl = null;
 
 function showMessage(id, message) {
   $(id).textContent = message;
@@ -51,6 +52,8 @@ $("registerTab").onclick = () => setMode("register");
 
 $("authForm").addEventListener("submit", async event => {
   event.preventDefault();
+  const submitBtn = $("authButton");
+  submitBtn.disabled = true;
   showMessage("authMessage", "Please wait...");
 
   const body = {
@@ -78,10 +81,12 @@ $("authForm").addEventListener("submit", async event => {
       return;
     }
 
-    $("password").value = "";
     await showDashboard();
+    $("password").value = "";
   } catch (error) {
     showMessage("authMessage", error.message);
+  } finally {
+    submitBtn.disabled = false;
   }
 });
 
@@ -257,7 +262,6 @@ $("logoutButton").onclick = async () => {
     setMode("login");
   }
 };
-let previewUrl = null;
 
 $("productImage").addEventListener("change", () => {
   const file = $("productImage").files[0];
